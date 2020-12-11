@@ -78,7 +78,6 @@ When I fill in this form with my:
   - City
   - State
   - Zip Code
-  - Description of why I would make a good home for these pet(s)
 And I click submit
 Then I am taken to the new application's show page
 And I see my Name, address information, and description of why I would make a good home
