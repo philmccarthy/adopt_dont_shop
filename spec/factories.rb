@@ -9,7 +9,7 @@ FactoryBot.define do
   end
 
   factory :pet do
-    image { ['cat.jpeg', 'dog.jpeg'].sample }
+    image { ['cat.jpg', 'dog.jpg'].sample }
     name { FFaker::Name.first_name}
     approximate_age { rand(1..14) }
     description { FFaker::Lorem.paragraph }
