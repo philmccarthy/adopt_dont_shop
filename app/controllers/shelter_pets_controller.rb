@@ -11,7 +11,8 @@ class ShelterPetsController < ApplicationController
   def create
     @shelter = Shelter.find(params[:shelter_id])
     @shelter.pets.create(shelter_pets_params)
-    redirect_to "/shelters/#{@shelter.id}/pets"
+    redirect_to "/shelters/#{@shelter.id}/pets" # redirect to pets#show
+
   end
 
   private

@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AdoptDontShopM2</title>
+    <title>Git Pets</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-
-  <header>
-    <div class="nav-bar">
-      <ul>
-        <p><%= link_to "Back to Home", "/" %>
-          <%= link_to "Go to Shelters", "/shelters" %>
-          <%= link_to 'Go to Pets', "/pets" %>
-  </head><br>
+  </head>
 
   <body>
+    <header>
+      <div class="nav-bar">
+        <ul>
+          <p><%= link_to "Back to Home", "/" %>
+            <%= link_to "Go to Shelters", "/shelters" %>
+            <%= link_to 'Go to Pets', "/pets" %></p>
+        </ul>
+      </div>
+    </header>
+
+    <% flash.each do |type, message| %>
+      <p><%= message %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

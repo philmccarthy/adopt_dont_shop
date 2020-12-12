@@ -39,8 +39,11 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'factory_bot_rails'
+  gem 'nyan-cat-formatter'
   gem 'pry'
   gem 'simplecov'
+  gem 'ffaker'
   gem 'shoulda-matchers', '~> 3.1'
 end
 

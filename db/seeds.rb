@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+shelters = FactoryBot.create_list(:shelter, 5)
+shelters.each do |shelt|
+  FactoryBot.create_list(:pet, rand(2..7), shelter: shelt)
+end
+
+# FactoryBot.create_list(:application, 10)

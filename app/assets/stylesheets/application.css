@@ -21,14 +21,14 @@ body {
   background-color: #fbf5cd;
    color: #065e09;
    font-family: Arial;
-   font-size: 35px;
+   font-size: 1.25em;
    line-height: 1.5em;
    margin: 0em;
    text-align: center;
 }
 
 header {
-  padding: 10px;
+  padding: .5em;
   background-color: lightblue;
   color: white;
   font-family: Arial;
@@ -46,10 +46,18 @@ header {
   font-family: Arial;
   background-color: lightblue;
   color: black;
-  text-align: left;
-  font-size: 25px;
+  text-align: right;
+  font-size: 1.25em;
   padding: 0px;
+}
 
+.nav-bar a {
+  text-decoration: none;
+  padding: 1vw
+}
+
+.nav-bar a:hover {
+  color: blue;
 }
 
 * {

@@ -1,0 +1,19 @@
+<section id="app-<%= @application.id %>">
+  <h2>Application ID: <%= @application.id %></h2>
+  <h4>Application Status: <%= @application.status %></h4>
+  <h4>Applicant Name: <%= @application.name%></h4>
+  <h4>Address:</h4>
+  <p><%= "#{ @application.street}" %></br>
+    <%= "#{@application.city}, #{@application.state} #{@application.postal_code}" %></p>
+  <h4>Description:</h4>
+  <p><%= @application.description %></p>
+</section>
+
+<section id="app-<%= @application.id %>-pets">  
+  <h4>Pets:</h4>
+  <ul>
+    <% @application.pets do |pet| %>
+      <li><%= pet.name %></li>
+    <% end %>
+  </ul>
+</section>
