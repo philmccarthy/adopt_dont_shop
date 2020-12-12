@@ -8,7 +8,6 @@ RSpec.describe 'application show page', type: :feature do
 
     it 'when i visit an application show page' do
       visit "/applications/#{@app_1.id}"
-      save_and_open_page
 
       within("#app-#{@app_1.id}") do
         expect(page).to have_content(@app_1.name)
