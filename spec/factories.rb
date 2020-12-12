@@ -1,13 +1,29 @@
 FactoryBot.define do
-  # factory :model do
-  #   attribute { "yeahyeah"}
-  # end
+  factory :application do
+    name { FFaker::Name.name }
+    street { FFaker::AddressUS.street_address }
+    city { FFaker::AddressUS.city }
+    state { FFaker::AddressUS.state_abbr }
+    postal_code { FFaker::AddressUS.zip_code }
+    description { FFaker::Lorem.paragraph }
+  end
 
-  # factory :model, class: Admin do
-  #   sequence(:email) { |n| "user_#{n}@gmail.com" }
-  #   sequence(:password) { "password" }
-  #   sequence(:name) { |n| "User Name #{n}" }
-  #   role { 0 }
-  #   active { true }
-  # end
+  factory :pet do
+    image { ['cat.jpeg', 'dog.jpeg'].sample }
+    name { FFaker::Name.first_name}
+    approximate_age { rand(1..14) }
+    description { FFaker::Lorem.paragraph }
+    adoptable { true }
+    sex { [0, 1].sample }
+    shelter
+    # application_pets
+  end
+
+  factory :shelter do
+    name { FFaker::Company.name }
+    address { FFaker::AddressUS.street_address }
+    city { FFaker::AddressUS.city }
+    state { FFaker::AddressUS.state_abbr }
+    zip { FFaker::AddressUS.zip_code }
+  end
 end
