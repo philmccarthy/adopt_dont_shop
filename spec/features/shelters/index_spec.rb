@@ -17,7 +17,7 @@ RSpec.describe 'Shelters index page' do
 
     within "#shelter-#{@shelter1.id}" do
       expect(page).to have_content("Shady Shelter")
-      click_link "Edit Shelter"
+      click_button "Edit Shelter"
     end
 
     fill_in "name", with: "Shoddy Shelter"
@@ -33,7 +33,7 @@ RSpec.describe 'Shelters index page' do
 
     within "#shelter-#{@shelter1.id}" do
       expect(page).to have_content("Shady Shelter")
-      click_link "Delete Shelter"
+      click_button "Delete Shelter"
     end
 
     expect(current_path).to eq("/shelters")
@@ -47,9 +47,9 @@ RSpec.describe 'Shelters index page' do
     expect(page).to have_content("Shady Shelter")
 
     within "#shelter-#{@shelter1.id}" do
-      expect(page).to have_link("Edit Shelter")
+      expect(page).to have_button("Edit Shelter")
 
-      click_link "Edit Shelter"
+      click_button "Edit Shelter"
     end
 
       fill_in "name", with: 'Poo and Paws'
@@ -64,8 +64,8 @@ RSpec.describe 'Shelters index page' do
       visit "/shelters"
 
       within "#shelter-#{@shelter1.id}" do
-        expect(page).to have_link("Delete Shelter")
-        click_link "Delete Shelter"
+        expect(page).to have_button("Delete Shelter")
+        click_button "Delete Shelter"
       end
       expect(page).to_not have_content("Poo and Paws")
   end

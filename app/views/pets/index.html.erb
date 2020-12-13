@@ -1,15 +1,17 @@
-<h1>All Pets</h1>
+<h2>All Pets</h2>
+
+<%= button_to 'Start an Application', new_application_path, method: :get %>
 
 <% @pets.each do |pet| %>
   <% if pet.adoptable == true %>
   <section id="pet-<%= pet.id %>">
-      <h2>name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
-      <%= image_tag "#{pet.image}" %><br>
-      Approx Age: <%= pet.approximate_age %><br>
-      Sex: <%= pet.sex %><br>
-      Shelter: <%= link_to "#{pet.shelter.name}", "shelters/#{pet.shelter.id}" %><br>
-      <a href="/pets/<%= pet.id %>/edit">Update Pet</a>
-      <%= link_to "Delete Pet", "/pets/#{pet.id}", method: :delete %><br>
+      <h3>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3>
+      <%= image_tag "#{pet.image}", class: 'pet_img' %><br>
+      Approx. Age: <%= pet.approximate_age %></br>
+      Sex: <%= pet.sex %></br>
+      <%= button_to 'Go to Shelter', shelter_path(pet.shelter.id), method: :get %>
+      <%= button_to 'Edit Pet Info', edit_pet_path(pet.id), method: :get %>
+      <%= button_to "Delete Pet", "/pets/#{pet.id}", method: :delete %></br>
   </section>
   <% end %>
 <% end %>

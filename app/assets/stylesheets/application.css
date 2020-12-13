@@ -18,8 +18,8 @@
 
 
 body {
-  background-color: #fbf5cd;
-   color: #065e09;
+  background-color: #ffffff;
+   color: #000000;
    font-family: Arial;
    font-size: 1.25em;
    line-height: 1.5em;
@@ -27,41 +27,49 @@ body {
    text-align: center;
 }
 
+
 header {
   padding: .5em;
-  background-color: lightblue;
+  background-color: #3700b3;
   color: white;
   font-family: Arial;
   line-height: 2em;
   text-align: center;
 }
 
-.header-link {
-  background-color: #fbf5cd;
-  font-size: 20px;
-  color: black;
+li {
+  list-style: none;
+  text-align: center
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #3700b3;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #3700b3;
 }
 
 .nav-bar {
   font-family: Arial;
-  background-color: lightblue;
+  background-color: #3700b3;
   color: black;
-  text-align: right;
+  text-align: left;
   font-size: 1.25em;
   padding: 0px;
 }
 
 .nav-bar a {
-  text-decoration: none;
-  padding: 1vw
-}
-
-.nav-bar a:hover {
-  color: blue;
-}
-
-* {
-  box-sizing: border-box;
+  color: #ffffff;
+  padding: 3vw
 }
 
 .row {
@@ -82,4 +90,38 @@ header {
 .img-container {
   width: 50%;
   height: auto;
+}
+
+.pet_img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  overflow: hidden;
+}
+
+#description {
+  margin-top: 0.75vw;
+  width: 50%;
+  height: 10vw;
+}
+
+.flash {
+  color: #b00020
+}
+
+#adopt {
+  padding-left: 3vw;
+  color: #b00020
+}
+
+#new-app {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+#new-app input {
+  float: right; 
+  display: inline-block
 }

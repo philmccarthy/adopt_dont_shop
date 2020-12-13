@@ -16,7 +16,6 @@ FactoryBot.define do
     adoptable { true }
     sex { [0, 1].sample }
     shelter
-    # application_pets
   end
 
   factory :shelter do
