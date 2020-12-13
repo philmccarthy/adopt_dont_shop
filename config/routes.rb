@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :shelters do
     resources :pets, controller: "shelter_pets", only: [:index, :new, :create]
   end
+  resources :application_pets
   
   scope :admin do
     resources :applications
