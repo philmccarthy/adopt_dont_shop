@@ -53,6 +53,7 @@ header {
 
 .nav-bar a {
   text-decoration: none;
+  
   padding: 1vw
 }
 
@@ -82,4 +83,11 @@ header {
 .img-container {
   width: 50%;
   height: auto;
+}
+
+.pet_img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  overflow: hidden;
 }
