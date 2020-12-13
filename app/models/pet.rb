@@ -1,6 +1,6 @@
 class Pet < ApplicationRecord
   belongs_to :shelter
-  has_many :application_pets
+  has_many :application_pets, dependent: :destroy
   has_many :applications, through: :application_pets
   
   validates_presence_of :name, :description, :approximate_age, :sex
@@ -10,4 +10,8 @@ class Pet < ApplicationRecord
             }
 
   enum sex: [:female, :male]
+
+  def self.search_by_name(search)
+    where("lower(name) LIKE ?", "%#{search.downcase}%")
+  end
 end

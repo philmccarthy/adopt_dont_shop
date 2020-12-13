@@ -6,8 +6,7 @@ class Application < ApplicationRecord
                         :street,
                         :city,
                         :state,
-                        :postal_code,
-                        :description
+                        :postal_code
 
   enum status: ['In Progress', 'Pending', 'Approved', 'Rejected']
 end
