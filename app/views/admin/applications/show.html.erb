@@ -3,6 +3,7 @@
 
 <%= render "/applications/details" %>
 
-<%= render "/applications/descrip" %>
-
-<%= render "admin_tools" %>
+<% if @application.Pending? %>
+  <%= render "/applications/descrip" %>
+  <%= render "admin_tools" %>
+<% end %>
