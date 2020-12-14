@@ -1,0 +1,7 @@
+<section id="app-<%= @application.id %>">
+  <h4>Application Status: <%= @application.status %></h4>
+  <h4>Applicant Name: <%= @application.name%></h4>
+  <h4>Address:</h4>
+  <p><%= "#{ @application.street}" %></br>
+    <%= "#{@application.city}, #{@application.state} #{@application.postal_code}" %></p>
+</section>
