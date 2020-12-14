@@ -10,6 +10,67 @@ RSpec.describe Application, type: :model do
     it {should have_many(:pets).through(:application_pets)}
   end
 
-  # describe 'instance methods' do
-  # end
+  describe 'instance methods' do
+    describe '#is_rejected' do
+      it 'can determine if an application is rejected' do
+        app = create(:application)
+        pet = create(:pet, name: 'Bowwow')
+        app_pet = ApplicationPet.create!(application: app, pet: pet, status: nil)
+       
+        expect(app.is_rejected?).to eq(false)
+        
+        app_pet.reject
+        expect(app.is_rejected?).to eq(true)
+        
+        app_pet.approve
+        expect(app.is_rejected?).to eq(false)
+      end
+    end
+
+    describe '#is_approved' do
+      it 'can determine if an application is approved' do
+        app = create(:application)
+        pet = create(:pet, name: 'Bowwow')
+        app_pet = ApplicationPet.create!(application: app, pet: pet, status: nil)
+       
+        expect(app.is_approved?).to eq(false)
+        
+        app_pet.reject
+        expect(app.is_approved?).to eq(false)
+        
+        app_pet.approve
+        expect(app.is_approved?).to eq(true)
+      end
+    end
+
+    describe '#pets_outstanding' do
+      it 'can determine if there are any pets that have not been approved or rejected' do
+        app = create(:application)
+        pet = create(:pet, name: 'Bowwow')
+        app_pet = ApplicationPet.create!(application: app, pet: pet, status: nil)
+
+        expect(app.pets_outstanding?).to eq(true)
+        app_pet.approve
+        expect(app.pets_outstanding?).to eq(false)
+      end
+    end
+    
+    describe '#approve' do
+      it 'it can change status to approved' do
+        app = create(:application)
+        pet = create(:pet, name: 'Bowwow')
+        app.approve
+        expect(app.status).to eq('Approved')
+      end
+    end
+
+    describe '#reject' do
+      it 'it can change status to rejected' do
+        app = create(:application)
+        pet = create(:pet, name: 'Bowwow')
+         app.reject
+        expect(app.status).to eq('Rejected')
+      end
+    end
+  end
 end
