@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   end
   resources :application_pets
   
-  scope :admin do
-    resources :applications
+  namespace :admin do
+    resources :applications, only: [:show]
+    resources :application_pets, only: [:update]
   end
 end
