@@ -1,0 +1,7 @@
+<% if @application.pets.count >= 1 && @application.status == "In Progress" %>
+  <%= form_tag application_path(@application), id: "app-#{@application.id}-submit", method: :patch do %>
+    <%= label_tag :description, 'Why would you make a good pet home?' %></br>
+    <%= text_field_tag :description %><br>
+    <%= submit_tag 'Submit Application' %></br></br>
+  <% end %>
+<% end %>

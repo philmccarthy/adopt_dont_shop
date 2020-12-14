@@ -114,6 +114,31 @@ a:visited {
   color: #b00020
 }
 
+#reject {
+  padding-left: 3vw;
+  color: #b00020;
+  font-size: 0.75em;
+}
+
+#approve {
+  padding-left: 3vw;
+  font-size: 0.75em;
+}
+
+.app-pet-status {
+  padding-left: 4.5vw;
+  font-size: 0.75em;
+  font-style: italic;
+}
+
+#rejected {
+  color: #b00020;
+}
+
+#approved {
+  color: rgb(0, 135, 0);
+}
+
 #new-app {
   display: inline-block;
   margin-left: auto;

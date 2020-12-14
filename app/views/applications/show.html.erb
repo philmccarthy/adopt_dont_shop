@@ -1,59 +1,11 @@
-<section id="app-<%= @application.id %>">
-  <h2>Application ID: <%= @application.id %></h2>
-  <h4>Application Status: <%= @application.status %></h4>
-  <h4>Applicant Name: <%= @application.name%></h4>
-  <h4>Address:</h4>
-  <p><%= "#{ @application.street}" %></br>
-    <%= "#{@application.city}, #{@application.state} #{@application.postal_code}" %></p>
-</section>
+<h2>Application ID: <%= @application.id %></h2>
 
-<section id="app-<%= @application.id %>-descrip">
-  <% if !@application.description.nil? %>
-    <h4>Description:</h4>
-    <p><%= @application.description %></p>
-  <% end %>
-</section>
+<%= render "details" %>
 
-<section id="app-<%= @application.id %>-search">
-<% if @application.Pending? %>
-  <p class="flash">Your application was submitted.</p>
-
-<% else %>
-  <h4>Search for Pets to Adopt:</h4>
-    <%= form_tag(application_path(@application.id), method: :get, name: :search) do %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag 'Search' %>
-    <% end %>
-
-    <% if @match_pets.nil? %>
-      <p class="flash">Search for some pets!</p>
-    <% elsif @match_pets.count == 0 %>
-      <p class="flash">No pets matched your search.</p>
-    <% else %>
-      <ul id="match-pets">
-        <% @match_pets.each do |pet| %>
-          <li id="adopt-<%= pet.id %>"><%= link_to "#{pet.name}", pet_path(pet.id), method: :get %>
-              <%= link_to 'ADOPT', application_pets_path(app_id: @application.id, pet_id: pet.id), method: :post, id: "adopt" %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>    
+<% if @application.status != "In Progress" %>
+  <%= render "descrip" %>
 <% end %>
-</section>
 
-<section id="app-<%= @application.id %>-pets-added">  
-  <h4>Pets to be Adopted:</h4>
-  <ul>
-    <% @application.pets.each do |pet| %>
-      <li><%= link_to "#{pet.name}", pet_path(pet.id), method: :get %></li>
-    <% end %>
-  </ul>
-</section>
-
-<% if @application.pets.count >= 1 && @application.status == "In Progress" %>
-  <%= form_tag application_path(@application), id: "app-#{@application.id}-submit", method: :patch do %>
-    <%= label_tag :description, 'Why would you make a good pet home?' %></br>
-    <%= text_field_tag :description %><br>
-    <%= submit_tag 'Submit Application' %></br></br>
-  <% end %>
-<% end %>
+<%= render "search" %>
+<%= render "pets_added" %>
+<%= render "submit" %>

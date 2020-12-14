@@ -1,0 +1,26 @@
+<section id="app-<%= @application.id %>-pets-added">  
+  <% if @application.pets.count == 0 %>
+    <p>Pets you select will appear below.</p>
+  <% else %>
+    <h4>Pets to be Adopted:</h4>
+    <ul>
+      <% @application.pets.each do |pet| %>
+        <li><%= link_to "#{pet.name}", pet_path(pet.id), method: :get %>
+        
+        <% if @app_pets.find_by_pet(pet.id).first.approved? %>
+          <span class="app-pet-status" id="approved">APPROVED</span>
+        <% elsif @app_pets.find_by_pet(pet.id).first.rejected? %>
+          <span class="app-pet-status" id="rejected">REJECTED</span>
+        <% else %>
+          <%= link_to 'APPROVE', 
+              admin_application_pet_path(app_id: @application.id, pet_id: pet.id, status: :approve),
+              method: :patch, id: "approve" %>
+          <%= link_to 'REJECT',
+              admin_application_pet_path(app_id: @application.id, pet_id: pet.id, status: :reject),
+              method: :patch, id: "reject" %>
+        <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
