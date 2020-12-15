@@ -3,7 +3,7 @@
 <%= button_to 'Start an Application', new_application_path, method: :get %>
 
 <% @pets.each do |pet| %>
-  <% if pet.adoptable == true %>
+  <% if pet.adoptable %>
   <section id="pet-<%= pet.id %>">
       <h3>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3>
       <%= image_tag "#{pet.image}", class: 'pet_img' %><br>
