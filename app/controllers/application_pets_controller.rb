@@ -9,4 +9,9 @@ class ApplicationPetsController < ApplicationController
     end
     redirect_to application_path(@app.id)
   end
+
+  # private
+  # def app_params
+  #   params.permit(:app_id, :pet_id)
+  # end
 end
