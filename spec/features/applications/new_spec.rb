@@ -24,7 +24,7 @@ RSpec.describe 'application new page', type: :feature do
 
       click_button 'Submit'
 
-      expect(page).to have_content("Application not created. Required information is missing.")
+      expect(page).to have_content("Name can't be blank. Street can't be blank. City can't be blank. State can't be blank. Postal code can't be blank.")
     end
   end
 end
