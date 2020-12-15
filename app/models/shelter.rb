@@ -5,7 +5,10 @@ class Shelter < ApplicationRecord
     find_by_sql "SELECT * FROM shelters ORDER BY shelters.name DESC"
   end
 
-  # def self.name_and_address
-  #   find_by_sql
-  # end
+  def self.name_and_address(id)
+    find_by_sql(
+      "SELECT shelters.name, shelters.address, shelters.city, shelters.state, shelters.zip
+       FROM shelters
+       WHERE shelters.id = #{id}")
+  end
 end
