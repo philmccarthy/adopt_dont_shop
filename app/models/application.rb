@@ -2,6 +2,8 @@ class Application < ApplicationRecord
   has_many :application_pets, dependent: :destroy
   has_many :pets, through: :application_pets
 
+  accepts_nested_attributes_for :pets
+
   validates_presence_of :name,
                         :street,
                         :city,
@@ -31,8 +33,6 @@ class Application < ApplicationRecord
   end
 
   def make_pets_unadoptable
-    pets.each do |pet|
-      pet.update(adoptable: false)
-    end
+    pets.update_all(adoptable: false)
   end
 end
