@@ -72,6 +72,14 @@ a:visited {
   padding: 3vw
 }
 
+#new-app {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  text-align: left;
+}
+
 .row {
   display: flex;
 }
@@ -105,8 +113,15 @@ a:visited {
   height: 10vw;
 }
 
+#the-flash {
+  margin-top: 1vw;
+  padding: 0% 28%;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
 .flash {
-  color: #b00020
+  color: #b00020;
 }
 
 #adopt {
@@ -137,13 +152,6 @@ a:visited {
 
 .approved {
   color: rgb(0, 135, 0);
-}
-
-#new-app {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
 }
 
 #new-app input {
