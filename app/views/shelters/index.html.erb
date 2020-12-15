@@ -1,11 +1,5 @@
-<h2>Shelters</h2  >
+<h2>Shelters</h2>
 
-<% @shelters.each do |shelter| %>
-  <section id="shelter-<%=shelter.id%>">
-    <h2><%= link_to "#{shelter.name}", shelter_path(shelter) %></h2>
-    <%= button_to 'Edit Shelter', edit_shelter_path(shelter), method: :get %>
-    <%= button_to "Delete Shelter", shelter_path(shelter), method: :delete %></br>
-  </section>
-<% end %>
+<%= render "shelter_list" %>
 
-<h3><%= link_to 'Create New Shelter', '/shelters/new' %></h3>
+<h3><%= link_to 'Create New Shelter', new_shelter_path %></h3>
