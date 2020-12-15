@@ -6,6 +6,9 @@
   <%= render "descrip" %>
 <% end %>
 
-<%= render "search" %>
+<% if @application.status == "In Progress" %>
+  <%= render "search" %>
+<% end %>
+
 <%= render "pets_added" %>
 <%= render "submit" %>

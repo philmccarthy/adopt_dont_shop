@@ -3,8 +3,17 @@ require 'rails_helper'
 RSpec.describe ApplicationPet, type: :model do
 
   describe 'relationships' do
-    it {should belong_to :application}
-    it {should belong_to :pet}
+    it { should belong_to :application }
+    it { should belong_to :pet }
+  end
+
+  describe 'validations' do
+    it 'a unique application should not validate a duplicate pet_id' do
+      pet = create(:pet)
+      app = create(:application)
+      app_pet_1 = ApplicationPet.create!(application: app, pet: pet)
+      expect(ApplicationPet.new(application: app, pet: pet)).to_not be_valid
+    end
   end
 
   describe 'class methods' do
@@ -12,7 +21,7 @@ RSpec.describe ApplicationPet, type: :model do
       app = create(:application)
       pet = create(:pet)
       app_pet = ApplicationPet.create!(application: app, pet: pet)
-      expect(ApplicationPet.find_by_keys(app.id, pet.id).first).to eq(app_pet)
+      expect(ApplicationPet.find_by_keys(app.id, pet.id)).to eq(app_pet)
     end
 
     it '::find_by_pet' do
