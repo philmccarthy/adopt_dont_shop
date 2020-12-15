@@ -1,13 +1,12 @@
 class ApplicationPet < ApplicationRecord
   belongs_to :application
   belongs_to :pet
-
-  validates_uniqueness_of :pet_id, :scope => :application_id
+  validates :pet_id, :uniqueness => { :scope => :application_id }
 
   enum status: [:approved, :rejected]
 
   def self.find_by_keys(app_id, pt_id)
-    where(application_id: app_id, pet_id: pt_id)
+    where(application_id: app_id, pet_id: pt_id).first
   end
 
   def self.find_by_pet(pt_id)

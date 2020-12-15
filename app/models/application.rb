@@ -29,4 +29,10 @@ class Application < ApplicationRecord
   def reject
     self.Rejected!
   end
+
+  def make_pets_unadoptable
+    pets.each do |pet|
+      pet.update(adoptable: false)
+    end
+  end
 end
