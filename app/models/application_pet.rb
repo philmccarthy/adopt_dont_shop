@@ -6,7 +6,7 @@ class ApplicationPet < ApplicationRecord
   enum status: [:approved, :rejected]
 
   def self.find_by_keys(app_id, pt_id)
-    where(application_id: app_id, pet_id: pt_id).first
+    find_by(application_id: app_id, pet_id: pt_id)
   end
 
   def self.find_by_pet(pt_id)
