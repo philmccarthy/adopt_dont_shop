@@ -4,17 +4,17 @@
       <% @application.pets.each do |pet| %>
         <li id="admin-tools-<%= pet.id %>"><%= link_to "#{pet.name}", pet_path(pet.id), method: :get %>
         
-        <% if !pet.adoptable? %>
-          <span class="app-pet-status">RESERVED</span>
-          <%= link_to 'REJECT',
-            admin_application_pet_path(app_id: @application.id, pet_id: pet.id, status: :reject),
-            method: :patch, class: "reject", id: "reject" %>
-
-        <% elsif @app_pets.find_by_pet(pet.id).first.approved? %>
+        <% if @app_pets.find_by_pet(pet.id).first.approved? %>
           <span class="app-pet-status">APPROVED</span>
        
         <% elsif @app_pets.find_by_pet(pet.id).first.rejected? %>
           <span class="app-pet-status">REJECTED</span>
+
+        <% elsif !pet.adoptable? %>
+          <span class="app-pet-status">RESERVED</span>
+          <%= link_to 'REJECT',
+            admin_application_pet_path(app_id: @application.id, pet_id: pet.id, status: :reject),
+            method: :patch, class: "reject", id: "reject" %>
 
         <% else %>
           <%= link_to 'APPROVE', 
