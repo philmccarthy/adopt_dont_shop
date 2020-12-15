@@ -72,5 +72,16 @@ RSpec.describe Application, type: :model do
         expect(app.status).to eq('Rejected')
       end
     end
+
+    describe '#make_pets_unadoptable' do
+      it 'changes pets adoptable attribute to false' do
+        app_1 = create(:application)
+        pet_1 = create(:pet)
+        app_pet = ApplicationPet.create!(application: app_1, pet: pet_1, status: 'approved')
+        expect(app_1.pets.first.adoptable?).to eq(true)
+        app_1.make_pets_unadoptable
+        expect(app_1.pets.first.adoptable?).to eq(false)
+      end
+    end
   end
 end
