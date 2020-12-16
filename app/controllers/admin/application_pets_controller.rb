@@ -6,6 +6,14 @@ class Admin::ApplicationPetsController < ApplicationController
     else
       @app_pet.reject
     end
+
+    if @app_pet.application.Pending? && @app_pet.application.is_rejected?
+      @app_pet.application.reject
+    elsif @app_pet.application.Pending? && @app_pet.application.is_approved?
+      @app_pet.application.approve
+      @app_pet.application.make_pets_unadoptable
+    end
+
     redirect_to admin_application_path(params[:id])
   end
 end
