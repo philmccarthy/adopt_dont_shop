@@ -26,8 +26,6 @@ RSpec.describe 'admin shelters index page', type: :feature do
       ApplicationPet.create(application: app_1, pet: pet_3)
       visit admin_shelters_path
 
-      save_and_open_page
-      
       within('#shelters-with-pending-apps') do
         expect(page).to have_content('Shelters with Pending Applications')
         expect(page).to have_content(shelter_1.name)
