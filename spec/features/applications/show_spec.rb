@@ -38,6 +38,16 @@ RSpec.describe 'application show page', type: :feature do
         expect(page).to have_content(@pet.name)
       end
 
+      within("#app-#{@app_1.id}-search") do
+        fill_in 'search', with: 'Bruiser'
+        click_button 'Search'
+        expect(page).to have_content(@pet.name)
+      end
+
+      within("#adopt-#{@pet.id}") do
+        click_link 'ADOPT'
+      end
+
       within("#app-#{@app_1.id}-submit") do
         fill_in 'description', with: 'I love pets!'
         click_button 'Submit Application'
