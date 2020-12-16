@@ -40,5 +40,17 @@ describe Pet, type: :model do
       expect(pet.female?).to be(true)
       expect(pet.male?).to be(false)
     end
+
+    describe 'class methods' do
+      describe '::search_by_name' do
+        it 'finds pets by partial name match and excludes pets that are not adoptable' do
+          shelter = Shelter.create!(name: 'Pet Rescue', address: '123 Adoption Ln.', city: 'Denver', state: 'CO', zip: '80222')
+          pet_1 = shelter.pets.create!(sex: :female, name: "Fluffy", approximate_age: 3, description: 'super cute', adoptable: true)
+          pet_2 = shelter.pets.create!(sex: :female, name: "Floofy", approximate_age: 5, description: 'super cute', adoptable: false)
+
+          expect(Pet.search_by_name('fl')).not_to include(pet_2)
+        end
+      end
+    end
   end
 end
