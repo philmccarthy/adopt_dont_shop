@@ -58,6 +58,10 @@ a:visited {
   color: #3700b3;
 }
 
+hr {
+  border: 1px dashed #6200ee;
+}
+
 .nav-bar {
   font-family: Arial;
   background-color: #3700b3;
