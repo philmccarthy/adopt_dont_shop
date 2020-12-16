@@ -1,9 +1,5 @@
 class ApplicationsController < ApplicationController
 
-def index
-    @applications = Application.all
-  end
-
   def show
     @application = Application.find(params[:id])
     if params[:search]
@@ -19,7 +15,7 @@ def index
     if app.save
       redirect_to application_path(app.id)
     else
-      flash.now.notice = "Application not created. Required information is missing."
+      flash.now.notice = app.errors
       render :new
     end
   end

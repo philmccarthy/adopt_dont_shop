@@ -12,6 +12,9 @@ class Pet < ApplicationRecord
   enum sex: [:female, :male]
 
   def self.search_by_name(search)
-    where("lower(name) LIKE ?", "%#{search.downcase}%")
+    where("lower(name) LIKE ?", "%#{search.downcase}%").where(adoptable: true)
   end
 end
+
+
+# pet_app_id instance method?

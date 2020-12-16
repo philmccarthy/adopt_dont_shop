@@ -1,3 +1,17 @@
-<h2>Admin Portal: Shelters</h2>
+<h2>Admin Portal: Shelters</h2></br>
 
-<%= render "/shelters/shelter_list" %>
+<div id="shelters-with-pending-apps">
+  <hr>
+    <h3>Shelters with Pending Applications</h3>
+    <% @shelters_with_pending.each do |shelter| %>
+      <section id="shelter-with-pending-<%=shelter.id%>">
+        <h4><%= link_to "#{shelter.name}", admin_shelter_path(shelter) %></h2>
+      </section>
+    <% end %>
+  <hr></br>
+</div></br>
+
+
+<h3>All Shelters</h3>
+<%= render partial: "/shelters/shelter_list", locals: {shelters: @shelters}  %>
+

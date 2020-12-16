@@ -20,9 +20,19 @@
       </div>
     </header>
 
-  <% flash.each do |type, message| %>
-    <p class="flash"><%= message %></p>
-  <% end %>
+  <div id="the-flash">
+    <% flash.each do |type, messages| %>    
+      <% if messages.is_a?(String) %>
+        <span class="flash"><%= messages %>.</p>
+      <% else %>
+        <% messages.full_messages.each do |message| %>
+          <span class="flash"><%= message %>.  </span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
   <%= yield %>
+
   </body>
 </html>
