@@ -11,4 +11,11 @@ class Shelter < ApplicationRecord
        FROM shelters
        WHERE shelters.id = #{id}")
   end
+
+  def self.pending_applications
+    joins(pets: :application_pets)
+    .where(application_pets: {status: nil})
+    .distinct
+    .order(:name)
+  end
 end
