@@ -11,6 +11,9 @@ class Pet < ApplicationRecord
 
   enum sex: [:female, :male]
 
+  scope :average_adoptable_age, -> { where(adoptable: true).average(:approximate_age) }
+  scope :count_adoptable, -> { where(adoptable: true).count}
+
   def self.search_by_name(search)
     where("lower(name) LIKE ?", "%#{search.downcase}%").where(adoptable: true)
   end
