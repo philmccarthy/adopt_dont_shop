@@ -27,9 +27,10 @@ describe Pet, type: :model do
       describe '.average_age (scope)' do
         it 'returns average age of pets collection' do
           shelter = Shelter.create!(name: 'Pet Rescue', address: '123 Adoption Ln.', city: 'Denver', state: 'CO', zip: '80222')
-          pet_1 = shelter.pets.create!(sex: :female, name: "Fluffy", approximate_age: 3, description: 'super cute', adoptable: true)
-          pet_2 = shelter.pets.create!(sex: :female, name: "Floofy", approximate_age: 5, description: 'super cute', adoptable: false)
-          expect(shelter.pets.average_age).to eq(4)
+          shelter.pets.create!(sex: :female, name: "Fluffy", approximate_age: 3, description: 'super cute', adoptable: true)
+          shelter.pets.create!(sex: :female, name: "Floofy", approximate_age: 5, description: 'super cute', adoptable: false)
+          shelter.pets.create!(sex: :female, name: "Gloofy", approximate_age: 5, description: 'super cute', adoptable: true)
+          expect(shelter.pets.average_adoptable_age).to eq(4)
         end
       end
     end
