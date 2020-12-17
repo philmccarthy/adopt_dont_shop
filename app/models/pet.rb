@@ -17,4 +17,11 @@ class Pet < ApplicationRecord
   def self.search_by_name(search)
     where("lower(name) LIKE ?", "%#{search.downcase}%").where(adoptable: true)
   end
+
+  def self.count_adopted
+    joins(:applications)
+      .select('pets.*, applications.status')
+      .where(applications: { status: 2 })
+      .count(:pets)
+  end
 end
