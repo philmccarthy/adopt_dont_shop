@@ -47,15 +47,15 @@ describe Pet, type: :model do
       describe '::count_adopted' do
         it 'returns count of adopted pets' do
           shelter = Shelter.create!(name: 'Pet Rescue', address: '123 Adoption Ln.', city: 'Denver', state: 'CO', zip: '80222')
-          pet_1 = shelter.pets.create!(sex: :female, name: "Fluffy", approximate_age: 3, description: 'super cute')
-          pet_2 = shelter.pets.create!(sex: :female, name: "Floofy", approximate_age: 5, description: 'super cute')
-          pet_3 = shelter.pets.create!(sex: :female, name: "Gloofy", approximate_age: 5, description: 'super cute')
-          app_1 = create(:application, status: 2)
-          app_2 = create(:application, status: 3)
-          ApplicationPet.create!(application: app_1, pet: pet_1)
-          ApplicationPet.create!(application: app_1, pet: pet_2)
+          pet_1 = shelter.pets.create!(sex: :female, name: "Fluffy", approximate_age: 3, description: 'super cute', adoptable: false)
+          pet_2 = shelter.pets.create!(sex: :female, name: "Floofy", approximate_age: 5, description: 'super cute', adoptable: false)
+          pet_3 = shelter.pets.create!(sex: :female, name: "Gloofy", approximate_age: 5, description: 'super cute', adoptable: true)
+          # app_1 = create(:application, status: 2)
+          # app_2 = create(:application, status: 3)
+          # ApplicationPet.create!(application: app_1, pet: pet_1)
+          # ApplicationPet.create!(application: app_1, pet: pet_2)
 
-          ApplicationPet.create!(application: app_2, pet: pet_3)
+          # ApplicationPet.create!(application: app_2, pet: pet_3)
           
           expect(shelter.pets.count_adopted).to eq(2)
         end
