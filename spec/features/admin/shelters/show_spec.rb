@@ -27,6 +27,7 @@ RSpec.describe 'admin shelter show page', type: :feature do
     within('#shelter-stats') do
       expect(page).to have_content(shelter1.pets.average_adoptable_age)
       expect(page).to have_content(shelter1.pets.count_adoptable)
+      expect(page).to have_content(shelter1.pets.count_adopted)
     end
   end
 end
