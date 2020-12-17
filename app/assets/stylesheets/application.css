@@ -131,7 +131,7 @@ input[type=button], input[type=submit] {
 }
 
 .pet_img {
-  max-width: 50%;
+  width: 50%;
   max-height: auto;
   height: auto;
   overflow: hidden;

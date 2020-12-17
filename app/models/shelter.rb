@@ -7,7 +7,7 @@ class Shelter < ApplicationRecord
 
   def self.name_and_address(id)
     find_by_sql(
-      "SELECT shelters.name, shelters.address, shelters.city, shelters.state, shelters.zip
+      "SELECT *
        FROM shelters
        WHERE shelters.id = #{id}")
   end
