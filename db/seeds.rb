@@ -7,8 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 shelters = FactoryBot.create_list(:shelter, 5)
-shelters.each do |shelt|
-  FactoryBot.create_list(:pet, rand(2..7), shelter: shelt)
+shelters.each do |shelter|
+  FactoryBot.create_list(:pet, rand(2..7), shelter: shelter)
 end
-
-# FactoryBot.create_list(:application, 10)

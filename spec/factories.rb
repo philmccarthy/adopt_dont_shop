@@ -25,4 +25,10 @@ FactoryBot.define do
     state { FFaker::AddressUS.state_abbr }
     zip { FFaker::AddressUS.zip_code }
   end
+
+  factory :application_pet do
+    application
+    pet
+    status { nil }
+  end
 end
