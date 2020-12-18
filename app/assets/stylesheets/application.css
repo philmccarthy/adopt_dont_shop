@@ -60,7 +60,48 @@ a:visited {
 
 hr {
   border: 1px dashed #6200ee;
+  margin: 3vmax;
+
 }
+
+input[type=button], input[type=submit] {
+  background-color: #6200ee;
+  border: none;
+  color: white;
+  position: relative; top: 1vw;
+  padding: 1vmax 1vmax;
+  text-decoration: none;
+  margin: 1vmax 1vmax;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+  font-size: 1.5em;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+input[type=text] {
+  width: auto;
+}
+
+#search-pets-button {
+  width: 30%;
+}
+
+#search {
+  width: 30%;
+  height: 5vmax;
+  text-align: center;
+  font-size: 1.5em
+}
+
+#pets-added {
+  font-size: 1.5em;
+}
+
+#pets-added div {
+  padding: 1.25vw;
+}
+
 
 .nav-bar {
   font-family: Arial;
@@ -71,9 +112,23 @@ hr {
   padding: 0px;
 }
 
+#logo {
+  padding: .5vw;
+  font-size: 2vmax;
+  letter-spacing: 0.15em;
+  font-style: italic;
+  text-align: right;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  float: right;
+  position: relative;
+  top: -0.25vmax;
+  right: 5%;
+}
+
 .nav-bar a {
   color: #ffffff;
-  padding: 3vw
+  padding: 2.5vmax;
+  font-size: 2vmax
 }
 
 #new-app {
@@ -105,16 +160,19 @@ hr {
 }
 
 .pet_img {
-  width: 100%;
-  max-width: 400px;
+  width: 50%;
+  max-height: auto;
   height: auto;
   overflow: hidden;
+  padding: 20px 0px 20px 0px;
 }
 
 #description {
+  font-family: Arial;
   margin-top: 0.75vw;
-  width: 50%;
+  width: 40%;
   height: 10vw;
+  font-size: 1em;
 }
 
 #the-flash {
@@ -161,4 +219,11 @@ hr {
 #new-app input {
   float: right; 
   display: inline-block
+}
+
+.stat {
+  font-style: italic;
+  font-size: 1.25em;
+  padding: 2vw 0vw 4vw 0vw;
+  text-align: center;
 }

@@ -12,12 +12,12 @@
   <body>
     <header>
       <div class="nav-bar">
-        <ul>
-          <p><%= link_to "Home", root_path %>
-            <%= link_to "Shelters", shelters_path %>
-            <%= link_to 'Pets', pets_path %></p>
+        <ul id="nav-links">
+          <%= link_to "Home", root_path %>
+          <%= link_to "Shelters", shelters_path %>
+          <%= link_to 'Pets', pets_path %>
+          <%= link_to "SFG", admin_shelters_path, id: "logo" %>
         </ul>
-      </div>
     </header>
 
   <div id="the-flash">

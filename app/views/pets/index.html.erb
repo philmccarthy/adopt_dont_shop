@@ -5,13 +5,14 @@
 <% @pets.each do |pet| %>
   <% if pet.adoptable %>
   <section id="pet-<%= pet.id %>">
-      <h3>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3>
+    <hr>
+      <h3>Name: <%= link_to "#{pet.name}", pet_path(pet) %></h3>
       <%= image_tag "#{pet.image}", class: 'pet_img' %><br>
       Approx. Age: <%= pet.approximate_age %></br>
       Sex: <%= pet.sex %></br>
-      <%= button_to 'Go to Shelter', shelter_path(pet.shelter.id), method: :get %>
-      <%= button_to 'Edit Pet Info', edit_pet_path(pet.id), method: :get %>
-      <%= button_to "Delete Pet", "/pets/#{pet.id}", method: :delete %></br>
+      <%= button_to 'Go to Shelter', shelter_path(pet.shelter), method: :get %>
+      <%= button_to 'Edit Pet Info', edit_pet_path(pet), method: :get %>
+      <%= button_to "Delete Pet", pet_path(pet), method: :delete %></br>
   </section>
   <% end %>
 <% end %>

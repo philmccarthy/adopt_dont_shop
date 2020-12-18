@@ -1,5 +1,4 @@
 class SheltersController < ApplicationController
-
   def index
     @shelters = Shelter.all
   end
@@ -35,5 +34,4 @@ class SheltersController < ApplicationController
   def shelter_params
     params.permit(:name, :address, :city, :state, :zip)
   end
-
 end
