@@ -5,8 +5,8 @@
 <% else %>
   <h4>Search for Pets to Adopt:</h4>
     <%= form_tag(application_path(@application.id), method: :get, name: :search) do %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag 'Search' %>
+      <%= text_field_tag :search, params[:search] %></br>
+      <%= submit_tag 'Search', id: 'search-pets-button' %></br></br>
     <% end %>
 
     <% if @match_pets.nil? %>
@@ -14,13 +14,13 @@
     <% elsif @match_pets.count == 0 %>
       <p class="flash">No pets matched your search.</p>
     <% else %>
-      <ul id="match-pets">
+      <div id="match-pets">
         <% @match_pets.each do |pet| %>
-          <li id="adopt-<%= pet.id %>"><%= link_to "#{pet.name}", pet_path(pet.id), method: :get %>
+          <div id="adopt-<%= pet.id %>"><%= link_to "#{pet.name}", pet_path(pet.id), method: :get %>
               <%= link_to 'ADOPT', application_pets_path(app_id: @application.id, pet_id: pet.id), method: :post, id: "adopt" %>
-          </li>
+          </div>
         <% end %>
-      </ul>
+      </div>
     <% end %>    
 <% end %>
 </section>
