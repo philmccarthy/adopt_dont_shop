@@ -12,6 +12,8 @@ class Application < ApplicationRecord
 
   enum status: ['In Progress', 'Pending', 'Approved', 'Rejected']
 
+  scope :pending, -> { where(status: 1)}
+
   def is_rejected?
     application_pets.rejected.any? && !pets_outstanding?
   end

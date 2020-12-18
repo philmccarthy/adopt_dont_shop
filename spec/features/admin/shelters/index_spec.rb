@@ -17,12 +17,13 @@ RSpec.describe 'admin shelters index page', type: :feature do
       shelter_1 = create(:shelter, name: 'Xylophone')
       shelter_2 = create(:shelter, name: 'Saxophone')
       shelter_3 = create(:shelter, name: 'Alphabet')
-      app_1 = create(:application, status: 'Pending')
+      app_1 = create(:application, status: 1)
+      app_2 = create(:application, status: 0)
       pet_1 = create(:pet, name: 'Bruiser', shelter: shelter_1)
       pet_2 = create(:pet, name: 'Blanche', shelter: shelter_2)
       pet_3 = create(:pet, name: 'Bowwow', shelter: shelter_3)
       ApplicationPet.create(application: app_1, pet: pet_1)
-      ApplicationPet.create(application: app_1, pet: pet_2, status: 0)
+      ApplicationPet.create(application: app_2, pet: pet_2)
       ApplicationPet.create(application: app_1, pet: pet_3)
       visit admin_shelters_path
 

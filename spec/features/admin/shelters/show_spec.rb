@@ -33,15 +33,17 @@ RSpec.describe 'admin shelter show page', type: :feature do
 
   it 'has a action required section' do
     shelter_1 = create(:shelter)
-    app_1 = create(:application, status: 'Pending')
+    app_1 = create(:application, status: 1)
+    app_2 = create(:application, status: 0)
+    app_3 = create(:application, status: 2)
     pet_1 = create(:pet, name: 'Bruiser', shelter: shelter_1)
     pet_2 = create(:pet, name: 'Blanche', shelter: shelter_1)
     pet_3 = create(:pet, name: 'Bowwow', shelter: shelter_1)
     pet_4 = create(:pet, name: 'Mary', shelter: shelter_1)
     ApplicationPet.create(application: app_1, pet: pet_1)
     ApplicationPet.create(application: app_1, pet: pet_2)
-    ApplicationPet.create(application: app_1, pet: pet_3, status: 1)
-    ApplicationPet.create(application: app_1, pet: pet_4, status: 0)
+    ApplicationPet.create(application: app_2, pet: pet_3)
+    ApplicationPet.create(application: app_3, pet: pet_4)
     
     visit admin_shelter_path(shelter_1)
 

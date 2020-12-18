@@ -11,10 +11,10 @@
   <h2 class="flash">Admin Action Required</h2>
   <p>Pending applications will appear below.</p>
     <% @shelter.pets.each do |pet| %>
-      <% if pet.application_pets.pending.any? %>
+      <% if pet.applications.pending.any? %>
         <h3>Pending Applications for <%= pet.name %></h3>
-        <% pet.application_pets.pending.each do |app_pet| %>
-          <div><%= link_to "Application #{app_pet.application_id}", admin_application_path(app_pet.application_id) %></div>
+        <% pet.applications.pending.each do |app| %>
+          <div><%= link_to "Application #{app.id}", admin_application_path(app) %></div>
         <% end %>
       <% else %>
       <% end %>
