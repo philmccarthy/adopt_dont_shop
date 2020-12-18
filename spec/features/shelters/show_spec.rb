@@ -19,9 +19,9 @@ RSpec.describe 'Shelter show page' do
   it "has a link to that shelter's pets" do
     visit "/shelters/#{@shelter1.id}"
 
-    expect(page).to have_link("#{@shelter1.name}'s Pets")
+    expect(page).to have_button("#{@shelter1.name}'s Pets")
 
-    click_link "#{@shelter1.name}'s Pets"
+    click_button "#{@shelter1.name}'s Pets"
 
     expect(current_path).to eq("/shelters/#{@shelter1.id}/pets")
   end

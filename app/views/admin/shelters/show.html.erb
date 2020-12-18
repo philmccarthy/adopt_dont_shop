@@ -1,19 +1,41 @@
-<h2><%= @shelter_details.name %></h2>
-<%= @shelter_details.address %>
-<%= @shelter_details.city %>
-<%= @shelter_details.state %>
-<%= @shelter_details.zip %></br></br>
+<h2>Shelter Admin Portal</h2>
+<h3><%= @shelter.name %></h3>
+<%= @shelter.address %>
+<%= @shelter.city %>
+<%= @shelter.state %>
+<%= @shelter.zip %></br></br>
 
-<hr></br>
+<hr>
+
+<section id="shelter-action-req">
+  <h2 class="flash">Admin Action Required</h2>
+  <p>Pending applications will appear below.</p>
+    <% @shelter.pets.each do |pet| %>
+      <% if pet.application_pets.pending.any? %>
+        <h3>Pending Applications for <%= pet.name %></h3>
+        <% pet.application_pets.pending.each do |app_pet| %>
+          <div><%= link_to "Application #{app_pet.application_id}", admin_application_path(app_pet.application_id) %></div>
+        <% end %>
+      <% else %>
+      <% end %>
+    <% end %>
+</section>
+
+<hr>
+
 <section id="shelter-stats">
   <h3>Shelter Statistics</h3>
-    <ul>
-      <li><b>Average Adoptable Pet Age:</b>
-        <div class="stat"> <%= @shelter_details.pets.average_adoptable_age.round(2) %> years</div></li>
-      <li><b>Count of Adoptable Pets:</b>
-        <div class="stat"><%= @shelter_details.pets.count_adoptable %></div></li>
-      <li><b>Count of Adopted Pets:</b>
-        <div class="stat"><%= @shelter_details.pets.count_adopted %></div></li>
+    <div>
+      <div><b>Average Adoptable Pet Age:</b>
+        <div class="stat"> <%= @shelter.pets.average_adoptable_age.round(2) %> years</div>
+      </div>
+      <div><b>Count of Adoptable Pets:</b>
+        <div class="stat"><%= @shelter.pets.count_adoptable %></div>
+      </div>
+      <div><b>Count of Adopted Pets:</b>
+        <div class="stat"><%= @shelter.pets.count_adopted %></div>
+      </div>
     </ul>
 </section>
+
 <hr>

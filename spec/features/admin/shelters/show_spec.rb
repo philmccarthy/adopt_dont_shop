@@ -30,4 +30,26 @@ RSpec.describe 'admin shelter show page', type: :feature do
       expect(page).to have_content(shelter1.pets.count_adopted)
     end
   end
+
+  it 'has a action required section' do
+    shelter_1 = create(:shelter)
+    app_1 = create(:application, status: 'Pending')
+    pet_1 = create(:pet, name: 'Bruiser', shelter: shelter_1)
+    pet_2 = create(:pet, name: 'Blanche', shelter: shelter_1)
+    pet_3 = create(:pet, name: 'Bowwow', shelter: shelter_1)
+    pet_4 = create(:pet, name: 'Mary', shelter: shelter_1)
+    ApplicationPet.create(application: app_1, pet: pet_1)
+    ApplicationPet.create(application: app_1, pet: pet_2)
+    ApplicationPet.create(application: app_1, pet: pet_3, status: 1)
+    ApplicationPet.create(application: app_1, pet: pet_4, status: 0)
+    
+    visit admin_shelter_path(shelter_1)
+
+    within('#shelter-action-req') do
+      expect(page).to have_content(pet_1.name)
+      expect(page).to have_content(pet_2.name)
+      expect(page).to_not have_content(pet_3.name)
+      expect(page).to_not have_content(pet_4.name)
+    end
+  end
 end
