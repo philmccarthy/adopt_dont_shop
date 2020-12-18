@@ -3,7 +3,9 @@ class ApplicationPet < ApplicationRecord
   belongs_to :pet
   validates :pet_id, :uniqueness => { :scope => :application_id }
 
-  enum status: [:approved, :rejected]
+  enum status: [:approved, :rejected] 
+
+  scope :pending, -> { where(status: nil)}
 
   def self.find_by_keys(app_id, pt_id)
     find_by(application_id: app_id, pet_id: pt_id)

@@ -24,6 +24,16 @@ describe Pet, type: :model do
         end
       end
 
+      describe '::search_by_name' do
+        it 'finds pets by partial name match and excludes pets that are not adoptable' do
+          shelter = Shelter.create!(name: 'Pet Rescue', address: '123 Adoption Ln.', city: 'Denver', state: 'CO', zip: '80222')
+          pet_1 = shelter.pets.create!(sex: :female, name: "Fluffy", approximate_age: 3, description: 'super cute', adoptable: true)
+          pet_2 = shelter.pets.create!(sex: :female, name: "Floofy", approximate_age: 5, description: 'super cute', adoptable: false)
+
+          expect(Pet.search_by_name('fl')).not_to include(pet_2)
+        end
+      end
+
       describe '.average_age (scope)' do
         it 'returns average age of pets collection' do
           shelter = Shelter.create!(name: 'Pet Rescue', address: '123 Adoption Ln.', city: 'Denver', state: 'CO', zip: '80222')
@@ -44,18 +54,12 @@ describe Pet, type: :model do
         end
       end
 
-      describe '::count_adopted' do
+      describe '.count_adopted (scope)' do
         it 'returns count of adopted pets' do
           shelter = Shelter.create!(name: 'Pet Rescue', address: '123 Adoption Ln.', city: 'Denver', state: 'CO', zip: '80222')
           pet_1 = shelter.pets.create!(sex: :female, name: "Fluffy", approximate_age: 3, description: 'super cute', adoptable: false)
           pet_2 = shelter.pets.create!(sex: :female, name: "Floofy", approximate_age: 5, description: 'super cute', adoptable: false)
           pet_3 = shelter.pets.create!(sex: :female, name: "Gloofy", approximate_age: 5, description: 'super cute', adoptable: true)
-          # app_1 = create(:application, status: 2)
-          # app_2 = create(:application, status: 3)
-          # ApplicationPet.create!(application: app_1, pet: pet_1)
-          # ApplicationPet.create!(application: app_1, pet: pet_2)
-
-          # ApplicationPet.create!(application: app_2, pet: pet_3)
           
           expect(shelter.pets.count_adopted).to eq(2)
         end
